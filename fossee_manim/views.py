@@ -423,6 +423,16 @@ def edit_proposal(request, proposal_id=None):
                         'categories': categories,
                         'msg': msg})
 
+@login_required
+def delete_proposal(request,proposal_id=None):
+    user = request.user
+    if is_email_checked(user) and user.is_authenticated():
+        proposal = Animation.objects.get(id=proposal_id)
+
+        return render(request, 'fossee_manim/delete_proposal.html',{'proposal':proposal})
+    else:
+        return redirect('/register/')
+
 
 def search(request):
     categories = Category.objects.all()

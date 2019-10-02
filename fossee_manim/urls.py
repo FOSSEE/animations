@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^libraryCS/$',views.libraryCS, name='libraryCS'),
     url(r'^explore/(?P<category>.+)$', views.explore,
         name='explore'),
+    url(r'^delete_proposal/([1-9][0-9]*)$',views.delete_proposal,name='delete_proposal'),
 ]
 
 urlpatterns += static(

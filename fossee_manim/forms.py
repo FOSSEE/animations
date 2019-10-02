@@ -282,6 +282,10 @@ class CommentForm(forms.ModelForm):
             'comments': forms.CharField(),
         }
 
+class deleteProposalForm(forms.ModelForm):
+    """
+    delete proposal
+    """
 
 class UploadAnimationForm(forms.ModelForm):
 
