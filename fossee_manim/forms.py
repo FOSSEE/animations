@@ -261,6 +261,7 @@ class AnimationProposal(forms.ModelForm):
             'any other related information')
         }
 
+
     class Meta:
         model = Animation
         fields = ['category', 'subcategory', 'title', 'outline', 'tags']
