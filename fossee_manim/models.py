@@ -96,6 +96,10 @@ status = (
     ("released", "Released")
 )
 
+video_status=(
+    ("approved","video approval"),
+    ("pending","video pending")
+)
 
 def has_profile(user):
     """ check if user has profile """
@@ -173,11 +177,13 @@ class Animation(models.Model):
                                  related_name="%(app_label)s_%(class)s_related")
     outline = models.TextField()
     status = models.CharField(max_length=255, choices=status)
+    video_upload_status = models.CharField(max_length=255,null=True,choices=video_status)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.CharField(max_length=255, blank=True)
     created = models.DateTimeField(default=timezone.now)
     tags = TaggableManager()
     history = HistoricalRecords()
+
 
     def __str__(self):
         return u"{0} | {1}".format(self.title, self.status)
