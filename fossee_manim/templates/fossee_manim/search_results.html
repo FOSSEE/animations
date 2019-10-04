@@ -6,14 +6,15 @@
 
 {% block content %}
 <br> <br>
-<div class="container-fluid jumbotron" style="margin-top:20px">
+<div class="container-fluid jumbotron" style="margin-top:20px; padding-bottom: 20%;">
 		{% if s_result %}
 			{% for anime in s_result %}
 				<div class="row">
 					<div class="col-md-4" >
 						<a href="{% url 'video' anime.id  %}" >
-							<span class="fa fa-play fa-4x" id="play-btn"></span>
-							<img height="90%" width="100%" src="{{ anime.thumbnail.url }}">
+							<span class="fa fa-play fa-4x" id="play-btn" style="position: absolute; color: #1fabc3;"></span>
+							<img height="80%" width="80%" src="{{ anime.thumbnail.url }}" >
+						
 						</a>
 					</div>
 					<div class="col-md-4">
