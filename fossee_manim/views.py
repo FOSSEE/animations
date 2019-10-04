@@ -286,6 +286,7 @@ def send_proposal(request):
                 form_data = form.save(commit=False)
                 form_data.contributor = user
                 form_data.status = "pending"
+                form_data.video_upload_status = "pending"
                 form.save()
             else:
                 return render(request, 'fossee_manim/send_proposal.html',
@@ -301,6 +302,7 @@ def send_proposal(request):
 
 @login_required
 def proposal_status(request):
+    val = 1;
     user = request.user
     if is_email_checked(user) and user.is_authenticated():
         profile = Profile.objects.get(user_id=user)
@@ -334,6 +336,7 @@ def proposal_status(request):
 @login_required
 def edit_proposal(request, proposal_id=None):
     user = request.user
+    print(proposal_id)
     if is_email_checked(user) and user.is_authenticated():
         comment_form = CommentForm()
         proposal = Animation.objects.get(id=proposal_id)
@@ -341,7 +344,9 @@ def edit_proposal(request, proposal_id=None):
         upload_form = UploadAnimationForm()
         categories = Category.objects.all()
         video = AnimationStats.objects.filter(animation=proposal_id)
+
         if len(video)>0:
+            print("hai")
             msg = ('Previously a video was uploaded for '+ video[0].animation.title)
         else:
             msg = ('No video uploaded')
@@ -356,12 +361,15 @@ def edit_proposal(request, proposal_id=None):
             status1 = request.POST.get('release')
             status2 = request.POST.get('rejected')
             status3 = request.POST.get('proposal_form')
-
-            if status1 or status2 or status3 is not None:
+            status4=request.POST.get('approve_video')
+            if status1 or status2 or status3 or status4 is not None:
                 if status1:
                     proposal.status = 'released'
                     send_email(request, call_on='released',
                             contributor=proposal.contributor)
+                elif status4:
+                    proposal.video_upload_status='approved'
+                    proposal.status='changes'
                 elif status3:
                     send_email(request, call_on='proposal_form',
                      contributor=proposal.contributor)
@@ -382,7 +390,7 @@ def edit_proposal(request, proposal_id=None):
                 form_data.animation = proposal
                 form_data.animation_status = proposal.status
                 if user.profile.position == 'reviewer':
-                    proposal.status = 'changes'
+                    # proposal.status = 'changes'
                     proposal.save()
                     send_email(request, call_on='changes',
                             contributor=proposal.contributor,
