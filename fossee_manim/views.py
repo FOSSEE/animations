@@ -558,3 +558,7 @@ def libraryPhys(request):
 def libraryCS(request):
     categories = Category.objects.all()
     return render(request, 'fossee_manim/libraryCS.html', {'categories': categories})
+def internship(request):
+    categories = Category.objects.all()
+    return render(request, 'fossee_manim/internship.html', {'categories': categories})
+

@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^edit_profile/$', views.edit_profile, name='edit_profile'),
     url(r'^video/([1-9][0-9]*)$', views.video, name='video'),
     url(r'^honorarium/$', views.honorarium, name='honorarium'),
+    url(r'^internship/$', views.internship, name='internship'),
     url(r'^faqs/$', views.faqs, name='faqs'),
     url(r'^search_category/(?P<cat>.+)$', views.search_category,
         name='search_category'),
