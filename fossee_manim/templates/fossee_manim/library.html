@@ -5,27 +5,35 @@ Library
 {% endblock %}
 
 {% block content %}
-<br> <br>
-<div class="container-fluid jumbotron" style="margin-top:20px">
+<div class="container" style="margin-top:60px; margin-bottom:60px; padding-top:10px">
+	<h1>
+		<center>Library </center>
+	</h1>
+	<hr>
+	<br> <br>
 	{% for anim in anims %}
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-5">
 			<a href="{% url 'video' anim.id  %}">
-				<span class="fa fa-play fa-4x" id="play-btn"></span>
 				<img height="90%" width="100%" src="{{ anim.thumbnail.url }}">
 			</a>
 		</div>
-		<div class="col-md-4">
-			<p style="color:#157b80; font-size: 300%;"> {{ anim.animation.title }} </p>
-			<p style="color:black; font-size: 100%;"> {{ anim.animation.description | truncatewords:5}} </p>
-			<a target="_blank" href="{{ anim.animation.github }}">
-				<p style="font-size: 70%;"> {{ anim.animation.github }} </p>
-			</a>
+		<div class="col-md-7">
+			<h3 style="color:#157b80;"> <a href="{% url 'video' anim.id  %}">{{ anim.animation.title }}</a> </h3>
+			<p style="color:grey;"> {{ anim.animation.outline | truncatewords:12}} </p>
+			<br>
+			<p> Contributor: {{ anim.animation.contributor }}
+				<br>
+				Category: {{ anim.animation.category }}
+				<br>
+				<a target="_blank" href="{{ anim.animation.link }}">
+					{{ anim.animation.link }}
+				</a>
+			 </p>
 		</div>
 	</div>
-	<hr>
 	{% endfor %}
 </div>
-<br>
+
 
 {% endblock %}

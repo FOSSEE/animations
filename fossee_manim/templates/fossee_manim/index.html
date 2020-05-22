@@ -45,27 +45,43 @@ FOSSEE Animations Homepage
 <div class="container">
 	<hr style="background-color:#e6e6e6">
 	<br>
-	<div class="row">
-		<div class="col-md-3">
-			<h2>Browse Library</h2>
+
+		<div class="text-center">
+			<a href="{% url 'library' %}"><button type="button" class="btn btn-light btn-lg">Browse Library</button></a>
 		</div>
-		<div class="col-md-1">
-			<a href="{% url 'library' %}"><button type="button" class="btn btn-warning">Browse</button>
-		</div>
-</div>
+
 <br>
 <hr style="background-color:#e6e6e6">
 </div>
+<br>
+
+<div class="container">
+	<br>
+	<div class="row align-items-center my-5">
+			<div class="col-lg-7">
+				<div class="col-lg-10" style="padding:0px;margin:0px;">
+						<h1><a href="https://math.animations.fossee.in">FOSSEE Animations | Math</a></h1>
+						<br>
+						<p>	We regularly conduct internships on Mathematics topics such as Real Analysis, Calculus and Linear Algebra<br> <br>
+							Interns submit lecture notes and animations to complement the notes! Write to us at <a href=mailto:animations@fossee.in>animations@fossee.in</a> if would like to participate!
+				</div>
+			</div>
+			<div class="col-lg-5" align="right">
+					<img class="img-fluid rounded mb-4 mb-lg-0" src="/static/img/indeximagez.png"
+							 alt="">
+			</div>
+	</div>
+	</div>
 
 
 <!--Infographics-->
 
-			<div class="jumbotron row" align="center" id= "infg" style="background-color: white; margin: 10px; font-family:'Open Sans', sans-serif; font-weight:400">
-				<div class="container" align="center">
-				 	<h2 style="color: #e45700; ">HOW IT WORKS</h2>
-					<img  class="img-fluid d-block text-center" width="80%" src="{{ URL_ROOT }}/static/img/info.svg" alt="Infographic">
-					<br>
-                    Want to know more? Visit our <button onclick="location.href='{{URL_ROOT}}/guidelines/'" style="background-color:#157b80; color:white;">Guidelines</button> page!
-			    </div>
-			</div>
+<div class="jumbotron row" align="center" id= "infg" style="background-color: white; margin: 10px; font-family:'Open Sans', sans-serif; font-weight:400">
+	<div class="container" align="center">
+	 	<h2 style="color: #e45700;">HOW TO CONTRIBUTE</h2>
+		<img  class="img-fluid d-block text-center" width="80%" src="{{ URL_ROOT }}/static/img/info.svg" alt="Infographic">
+		<br>
+              Want to know more? Visit our <button onclick="location.href='{{URL_ROOT}}/guidelines/'" style="background-color:#157b80; color:white;">Guidelines</button> page!
+    </div>
+</div>
 		{% endblock %}
