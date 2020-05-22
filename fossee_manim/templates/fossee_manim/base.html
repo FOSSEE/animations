@@ -33,11 +33,14 @@
 
 <body>
 {% block header %}
-    <nav class="navbar navbar-expand-lg" style="background-color:#222222; color: white;margin-top:-3px; margin-bottom:-3px;">
-        <a class="navbar-brand" href="{% url 'index' %}">
-            <img src="{{ URL_ROOT }}/static/img/main_logo.png" width="180" alt=""
-                 style="margin-right: 50px; margin-left: 20px">
-        </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:#222222; color: white;margin-top:-3px; margin-bottom:-3px;">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{{ URL_ROOT }}/static/img/main_logo.png" width="180" alt=""
+        style="margin-right: 50px; margin-left: 20px">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -45,52 +48,42 @@
                     <a class="btn navlink" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn navlink" href="{% url 'guidelines' %}">Guidelines</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="btn navlink" href="{% url 'faqs' %}">FAQ</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="btn navlink" href="{% url 'honorarium' %}">Honorarium</a>
-                </li>
-                <li class="nav-item active">
                   <a class="btn navlink" href="{% url 'fellowship2020' %}">Fellowship</a>
                 </li>
                 <li class="nav-item active">
                   <a class="btn navlink" href="{% url 'library' %}">Library</a>
                 </li>
+                <li class="nav-item active dropdown">
+                    <a class="btn navlink dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Procedure</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item btn navlink" href="{% url 'guidelines' %}">Guidelines</a>
+                        <a class="dropdown-item btn navlink" href="{% url 'faqs' %}">FAQ</a>
+                        <a class="dropdown-item btn navlink" href="{% url 'honorarium' %}">Honorarium</a>
+                    </div>
+                </li>
                 <li class="nav-item active">
                     <a class="btn navlink" href="{% url 'send_proposal' %}">Submit Proposal</a>
                 </li>
                 {% if user.is_authenticated %}
-                    {% if request.user.profile.position == 'contributor' %}
-
-                        <li class="nav-item active">
-                            <a class="btn navlink" href="{% url 'proposal_status' %}">Proposal Status</a>
-                        </li>
-
-                    {% else %}
-
-                        <li class="nav-item active">
-                            <a class="btn navlink" href="{% url 'proposal_status' %}">Submitted Proposals</a>
-                        </li>
-                    {% endif %}
-
-                    <li class="nav-item active">
-                        <a class="btn navlink" href="{% url 'view_profile' %}">View Profile</a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="btn navlink" href="{% url 'logout' %}">Logout</a>
-                    </li>
+                <li class="nav-item active dropdown">
+                    <a class="btn navlink dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% if request.user.profile.position == 'contributor' %}
+                          <a class="dropdown-item btn navlink" href="{% url 'proposal_status' %}">Proposal Status</a>
+                        {% else %}
+                          <a class="dropdown-item btn navlink" href="{% url 'proposal_status' %}">Your Proposals</a>
+                        {% endif %}
+                        <a class="dropdown-item btn navlink" href="{% url 'view_profile' %}">View Profile</a>
+                        <a class="dropdown-item btn navlink" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
                 {% else %}
-
                     <li class="nav-item active">
                         <a class="btn navlink" href="{% url 'login' %}">Login</a>
                     </li>
                 {% endif %}
             </ul>
-            <form class="form-inline" method="POST" action="/search/" style="margin-left: 10px; margin-top: 10px; ">
+            <form class="form-inline my-2 my-md-0" method="POST" action="/search/" style="margin-left: 10px; margin-top: 10px; ">
                 {% csrf_token %}
                 <input class="form-control mr-sm-2" type="search" id="sbox" name="sbox"
                        placeholder="Search for animations">
@@ -98,7 +91,6 @@
                     Search
                 </button>
             </form>
-
         </div>
     </nav>
 {% endblock %}

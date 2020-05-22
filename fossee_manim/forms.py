@@ -127,8 +127,8 @@ class UserRegistrationForm(forms.Form):
                                     in the format: '9999999999'.\
                                     Up to 10 digits allowed."})
     institute = forms.CharField(max_length=128,
-                                help_text='Please write full name of your\
-                                 Institute/Organization'
+                                help_text='Please write the full name of your\
+                                 Institute'
                                 )
     department = forms.ChoiceField(help_text='Department you work/study',
                                    choices=department_choices)
@@ -421,4 +421,3 @@ class UploadAnimationForm(forms.ModelForm):
         model = AnimationStats
         exclude = ['animation', 'views', 'like', 'dislike', 'thumbnail']
         widgets = {'video_path': forms.FileInput(),}
-
