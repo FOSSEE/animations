@@ -1,7 +1,47 @@
-#brand{
+.navbar{
+    font-family: 'Arsenal', sans-serif;
+    font-size: 20px;
+}
+
+
+.navlink{
+    color:white;
+    font-size: 18px;
+}
+
+p,
+h5,
+h6,
+.card-body,
+form{
+    font-family: 'Open Sans', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+.btn{
+    font-family: 'Arsenal', sans-serif;
+}
+.perma_link:hover{
+    background-color:#d1d2d3;
+    text-decoration: none;
+}
+.perma_link a{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#btnblue{
+    background-color: #1facb3;
+    border-color: transparent;
+}
+
+/* #brand{
     font-size: 2vw;
     font-family: "Times New Roman", Georgia, serif;
-}
+} */
 
 #tag {
     padding: 15 15 15 15;
@@ -11,9 +51,6 @@
 }
 
 
-#search_bar {
-    padding-top: 3.5%;
-}
 
 #center_row {
     background-color: #A5C9FF;
@@ -64,7 +101,7 @@ form.example::after {
 #btns {
     padding:25 25 25 25;
     font-size: 155%;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #btns > a {
@@ -74,9 +111,9 @@ iframe {
     margin-bottom: 3%;
 }
 hr {
-    color: darkgrey;
-    background-color: darkgray;
-    height: 3px;
+    color: grey;
+    background-color: gray;
+    height: 1px;
 }
 
 #r4 {
@@ -98,22 +135,6 @@ hr {
     opacity: 0.7;
 }
 
-/* Facebook */
-.fa-facebook {
-    background: #3B5998;
-    color: white;
-
-}
-/* Google */
-.fa-google {
-  background: #dd4b39;
-  color: white;
-}
-/* Youtube */
-.fa-youtube {
-  background: #bb0000;
-  color: white;
-}
 
 #social a{
     color: white;
@@ -132,10 +153,6 @@ hr {
     padding: 1rem;
     overflow: hidden;
     text-align: center;
-}
-
-.navlink{
-    color:white;
 }
 
 .navlogo:hover{
