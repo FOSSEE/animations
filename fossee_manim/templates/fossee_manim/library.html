@@ -1,64 +1,31 @@
 {% extends 'fossee_manim/base.html' %}
 
 {% block title %}
-FOSSEE Animations | Topic Library
+Library
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid jumbotron" align="justify" style="padding: 50px; background-color: transparent;">
-  <center>
-    <h2>Library of Topics</h2>
-  </center>
-  <div class="container" style="font-family: 'Open Sans', sans-serif; background-color: transparent;">
-    <center style="color: #555555;">
-      Muddled about what you could possibly animate? <br>
-      You can pick up topics from the lists below! <br>
-      <!-- We like to call it "<i>low-hanging fruit</i>". -->
-    </center>
-    <hr>
-    <br>
-    <div class="row">
-      <!-- Math Category -->
-      <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-          <a>
-            <img class="card-img-top" alt="Category Thumbnail">
-          </a>
-          <div class="card-body" align="center">
-            <a href="{% url 'libraryMath' %}">
-              <h4 class="card-text" style="color: #157b80;">Mathematics</h4>
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Physics Category -->
-      <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-          <a>
-            <img class="card-img-top" alt="Category Thumbnail">
-          </a>
-          <div class="card-body" align="center">
-            <a href="{% url 'libraryPhys' %}">
-              <h4 class="card-text" style="color: #157b80;">Physics</h4>
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- CS Category -->
-      <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-          <a>
-            <img class="card-img-top" alt="Category Thumbnail">
-          </a>
-          <div class="card-body" align="center">
-            <a href="{% url 'libraryCS' %}">
-              <h4 class="card-text" style="color: #157b80;">Computer Science</h4>
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- end of library -->
-    </div>
-  </div>
+<br> <br>
+<div class="container-fluid jumbotron" style="margin-top:20px">
+	{% for anim in anims %}
+	<div class="row">
+		<div class="col-md-4">
+			<a href="{% url 'video' anim.id  %}">
+				<span class="fa fa-play fa-4x" id="play-btn"></span>
+				<img height="90%" width="100%" src="{{ anim.thumbnail.url }}">
+			</a>
+		</div>
+		<div class="col-md-4">
+			<p style="color:#157b80; font-size: 300%;"> {{ anim.animation.title }} </p>
+			<p style="color:black; font-size: 100%;"> {{ anim.animation.description | truncatewords:5}} </p>
+			<a target="_blank" href="{{ anim.animation.github }}">
+				<p style="font-size: 70%;"> {{ anim.animation.github }} </p>
+			</a>
+		</div>
+	</div>
+	<hr>
+	{% endfor %}
 </div>
+<br>
+
 {% endblock %}

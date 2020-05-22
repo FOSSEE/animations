@@ -54,10 +54,13 @@
                     <a class="btn navlink" href="{% url 'honorarium' %}">Honorarium</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn navlink" href="{% url 'send_proposal' %}">Submit Proposal</a>
+                  <a class="btn navlink" href="{% url 'fellowship2020' %}">Fellowship</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn navlink" href="{% url 'fellowship2020' %}">Fellowship</a>
+                  <a class="btn navlink" href="{% url 'library' %}">Library</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn navlink" href="{% url 'send_proposal' %}">Submit Proposal</a>
                 </li>
                 {% if user.is_authenticated %}
                     {% if request.user.profile.position == 'contributor' %}

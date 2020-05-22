@@ -983,27 +983,8 @@ def fellowship2020(request):
 
 def library(request):
     categories = Category.objects.all()
+    animations = AnimationStats.objects.all()
     return render(request,
                   'fossee_manim/library.html',
-                  {'categories': categories})
-
-
-def libraryMath(request):
-    categories = Category.objects.all()
-    return render(request,
-                  'fossee_manim/libraryMath.html',
-                  {'categories': categories})
-
-
-def libraryPhys(request):
-    categories = Category.objects.all()
-    return render(request,
-                  'fossee_manim/libraryPhys.html',
-                  {'categories': categories})
-
-
-def libraryCS(request):
-    categories = Category.objects.all()
-    return render(request,
-                  'fossee_manim/libraryCS.html',
-                  {'categories': categories})
+                  {'categories': categories,
+                  'anims': animations})
